@@ -1,0 +1,58 @@
+/* COLORS — warm neutral foundation + one white-label brand token.
+   ────────────────────────────────────────────────────────────────
+   Design intent (clay.com-inspired): warm off-white surfaces, a lot of breathing
+   room, soft warm-grey borders. Colour is used sparingly. The ONLY chromatic
+   colour in a default screen is the brand — everything structural stays neutral.
+
+   WHITE-LABEL: a client rebrands by overriding exactly ONE token: --brand.
+   Every brand shade below is derived from it with color-mix(), so buttons,
+   progress bars and success states re-tint automatically. Optionally override
+   --brand-on if the brand colour needs dark text for contrast. */
+
+:root {
+  /* ── Warm neutral surfaces ─────────────────────────────── */
+  --bg-page:        oklch(0.985 0.006 75);  /* app background — warm cream   */
+  --bg-canvas:      oklch(0.972 0.008 74);  /* recessed / scroll areas       */
+  --surface:        oklch(1     0     0);   /* cards, sheets, inputs         */
+  --surface-raised: oklch(0.996 0.004 75);  /* popovers, menus               */
+  --surface-subtle: oklch(0.966 0.008 72);  /* subtle fills, hover rows      */
+  --surface-muted:  oklch(0.940 0.009 72);  /* pressed rows, track fills     */
+
+  /* ── Text ──────────────────────────────────────────────── */
+  --text-strong: oklch(0.26 0.012 65);  /* headings, primary                */
+  --text-body:   oklch(0.40 0.012 65);  /* body copy                        */
+  --text-muted:  oklch(0.56 0.010 68);  /* secondary, captions              */
+  --text-faint:  oklch(0.70 0.008 72);  /* placeholders, disabled           */
+  --text-on-brand: oklch(0.99 0.004 260);
+
+  /* ── Borders / hairlines ───────────────────────────────── */
+  --border-subtle:  oklch(0.930 0.006 72);  /* card hairlines               */
+  --border-default: oklch(0.890 0.007 72);  /* inputs, dividers             */
+  --border-strong:  oklch(0.820 0.008 70);  /* emphasis, focus base         */
+
+  /* ── BRAND (white-label — override this one token) ─────── */
+  --brand:        #4A5DA8;                                   /* placeholder  */
+  --brand-hover:  color-mix(in oklab, var(--brand), black 9%);
+  --brand-strong: color-mix(in oklab, var(--brand), black 16%);
+  --brand-soft:   color-mix(in oklab, var(--brand), white 86%);  /* tints    */
+  --brand-softer: color-mix(in oklab, var(--brand), white 93%);
+  --brand-border: color-mix(in oklab, var(--brand), white 66%);
+  --brand-on:     #ffffff;                        /* text/icons on brand fill */
+  --brand-ring:   color-mix(in oklab, var(--brand), white 74%); /* focus ring */
+
+  /* ── SUCCESS = brand (per white-label rule) ────────────── */
+  --success:      var(--brand);
+  --success-soft: var(--brand-soft);
+  --success-on:   var(--brand-on);
+
+  /* ── Feedback — restrained, used only for true errors/warnings ── */
+  --danger:       oklch(0.55 0.15 27);
+  --danger-soft:  oklch(0.955 0.028 27);
+  --danger-on:    #ffffff;
+  --warning:      oklch(0.70 0.11 70);
+  --warning-soft: oklch(0.955 0.040 80);
+
+  /* ── Fixed helpers ─────────────────────────────────────── */
+  --overlay: oklch(0.26 0.012 65 / 0.42);   /* dialog scrim */
+  --white:   #ffffff;
+}

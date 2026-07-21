@@ -1,0 +1,21 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Texto y bordes" subtitle="Jerarquía neutra cálida" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<style>body{margin:0;font-family:var(--font-sans);background:var(--bg-page);padding:24px;display:flex;gap:40px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:10px}
+.line{display:flex;align-items:baseline;gap:10px}
+.dot{width:18px;height:18px;border-radius:5px;flex-shrink:0}
+.t{font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.br{width:150px;height:0;border-top:1px solid;margin-top:7px}</style></head>
+<body>
+<div class="col">
+<div style="font-size:22px;font-weight:700;color:var(--text-strong)">Texto fuerte <span class="t">--text-strong</span></div>
+<div style="font-size:17px;color:var(--text-body)">Texto de cuerpo <span class="t">--text-body</span></div>
+<div style="font-size:15px;color:var(--text-muted)">Texto secundario <span class="t">--text-muted</span></div>
+<div style="font-size:15px;color:var(--text-faint)">Texto tenue / placeholder <span class="t">--text-faint</span></div>
+</div>
+<div class="col">
+<div class="br" style="border-color:var(--border-subtle)"></div><div class="t">--border-subtle</div>
+<div class="br" style="border-color:var(--border-default)"></div><div class="t">--border-default</div>
+<div class="br" style="border-color:var(--border-strong)"></div><div class="t">--border-strong</div>
+</div>
+</body></html>

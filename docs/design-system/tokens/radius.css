@@ -1,0 +1,11 @@
+/* RADIUS — soft, rounded, friendly. Nothing sharp. Cards and sheets lean generous. */
+
+:root {
+  --radius-xs:   0.375rem; /*  6 — tags, small chips        */
+  --radius-sm:   0.5rem;   /*  8 — badges, inline controls  */
+  --radius-md:   0.75rem;  /* 12 — buttons, inputs          */
+  --radius-lg:   1rem;     /* 16 — cards                    */
+  --radius-xl:   1.25rem;  /* 20 — sheets, large cards      */
+  --radius-2xl:  1.75rem;  /* 28 — hero panels, modals      */
+  --radius-pill: 999px;    /* pills, avatars, switches      */
+}

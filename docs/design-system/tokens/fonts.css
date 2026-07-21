@@ -1,0 +1,7 @@
+/* Webfonts — served from Google Fonts CDN.
+   Hanken Grotesk: warm, humanist grotesque. Large, friendly, amable — the whole UI voice.
+   JetBrains Mono: small data labels, tokens, metadata, timestamps.
+   NOTE: substituted from CDN. If the client has licensed brand fonts, drop the .woff2 files
+   in assets/fonts/ and replace these @import lines with local @font-face rules. */
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');

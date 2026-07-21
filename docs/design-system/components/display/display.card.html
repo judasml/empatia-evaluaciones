@@ -1,0 +1,58 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Datos y estado" subtitle="Card, Badge, Tag, Avatar" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../../styles.css"/>
+<style>
+  body{margin:0;background:var(--bg-page);font-family:var(--font-sans);color:var(--text-strong);padding:28px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+  .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);margin:0 0 10px}
+</style></head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/plain" id="demo">
+  const { Card, Badge, Tag, Avatar } = window.Empat;
+  function Demo(){
+    return (
+      <div>
+        <p className="lbl">Badge · Tag · Avatar</p>
+        <div className="row">
+          <Badge tone="brand" dot>Completada</Badge>
+          <Badge tone="neutral">Pendiente</Badge>
+          <Badge tone="muted">Borrador</Badge>
+          <Badge tone="danger" dot>Vencida</Badge>
+          <Tag selected>Comunicación</Tag>
+          <Tag onRemove={()=>{}}>Liderazgo</Tag>
+          <Avatar name="Lucía Fernández" status="complete" />
+          <Avatar name="Marco Ruiz" />
+        </div>
+        <p className="lbl">Card</p>
+        <div className="row" style={{alignItems:'stretch'}}>
+          <Card interactive style={{width:260}}>
+            <div style={{display:'flex',justifyContent:'space-between',alignItems:'start',gap:8}}>
+              <div style={{fontSize:'var(--fs-h4)',fontWeight:'var(--fw-semibold)'}}>Ciclo Q2 2026</div>
+              <Badge tone="brand">En curso</Badge>
+            </div>
+            <p style={{margin:'6px 0 0',color:'var(--text-muted)',fontSize:'var(--fs-body-sm)'}}>8 de 12 evaluaciones completadas</p>
+          </Card>
+          <Card style={{width:220,display:'flex',gap:12,alignItems:'center'}} padding="sm">
+            <Avatar name="Daniela Soto" size="lg" status="pending" />
+            <div>
+              <div style={{fontWeight:'var(--fw-semibold)'}}>Daniela Soto</div>
+              <div style={{color:'var(--text-muted)',fontSize:'var(--fs-caption)'}}>Tu par · pendiente</div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+<script>
+(async()=>{const opt={presets:[['react',{runtime:'classic'}]]};
+const load=async u=>Babel.transform(await(await fetch(u)).text(),opt).code;
+(0,eval)(await load('../../ds-preview.js'));
+(0,eval)(Babel.transform(document.getElementById('demo').textContent,opt).code);})();
+</script>
+</body></html>

@@ -1,0 +1,14 @@
+/* MOTION — calm and quick. Gentle ease, short durations, no bounce.
+   Interactions fade and settle; progress fills glide. Warmth, not spectacle. */
+
+:root {
+  --dur-fast:   120ms;  /* hover/press color shifts       */
+  --dur-base:   200ms;  /* most transitions               */
+  --dur-slow:   320ms;  /* sheets, dialogs, progress fills */
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);     /* default in/out       */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);  /* enter — decelerate    */
+  --ease-in:       cubic-bezier(0.4, 0, 1, 1);     /* exit — accelerate     */
+
+  --press-scale: 0.98;  /* buttons/cards shrink slightly on press */
+}

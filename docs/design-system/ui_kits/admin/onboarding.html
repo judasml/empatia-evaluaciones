@@ -1,0 +1,47 @@
+<!-- @dsCard group="empat.IA 360 · Admin" viewport="1200x860" name="Onboarding del cliente (3 pasos)" subtitle="Identidad de marca con preview en vivo, norte estratégico con KIM, y confirmación" -->
+<!-- @startingPoint section="empat.IA 360 · Admin" subtitle="Onboarding del cliente que configura su cuenta — 3 pasos" viewport="1200x860" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>empat.IA 360 — Configura tu cuenta</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { font-family: var(--font-sans); color: var(--text-strong); background: var(--bg-page); }
+  .rise { animation: fade 480ms var(--ease-out) both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .num { font-variant-numeric: tabular-nums; }
+  /* Dropzone */
+  .drop { transition: border-color var(--dur-fast) var(--ease-standard), background var(--dur-fast) var(--ease-standard); }
+  .drop:hover, .drop.over { border-color: var(--brand); background: var(--brand-softer); }
+  /* Swatches */
+  .sw { transition: transform var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard); cursor: pointer; }
+  .sw:hover { transform: scale(1.1); }
+  /* Links */
+  .qlink { transition: color var(--dur-fast) var(--ease-standard); }
+  .qlink:hover { color: var(--text-strong); }
+  /* Stepper */
+  .stepbtn { transition: color var(--dur-fast) var(--ease-standard); }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    (async function boot() {
+      const opt = { presets: [['react', { runtime: 'classic' }]] };
+      const load = async (url) => Babel.transform(await (await fetch(url)).text(), opt).code;
+      (0, eval)(await load('../../ds-preview.js'));
+      (0, eval)(await load('./onboarding.jsx'));
+    })().catch((e) => {
+      document.getElementById('root').innerHTML = '<pre style="padding:16px;color:#b00;font:12px monospace;white-space:pre-wrap">' + (e && e.stack || e) + '</pre>';
+    });
+  </script>
+</body>
+</html>

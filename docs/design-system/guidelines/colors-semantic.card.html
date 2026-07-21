@@ -1,0 +1,14 @@
+<!-- @dsCard group="Brand" viewport="700x160" name="Colores semánticos" subtitle="Éxito = marca; error/aviso, restringidos" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<style>body{margin:0;font-family:var(--font-sans);background:var(--bg-page);padding:24px;color:var(--text-strong)}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.sw{width:150px}
+.chip{height:56px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
+.n{font-size:12px;font-weight:600;margin:8px 0 1px}
+.t{font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted)}</style></head>
+<body><div class="row">
+<div class="sw"><div class="chip" style="background:var(--success);color:var(--success-on)">Éxito</div><div class="n">Éxito = marca</div><div class="t">--success</div></div>
+<div class="sw"><div class="chip" style="background:var(--brand-soft);color:var(--brand-strong)">Éxito suave</div><div class="n">Fondo de éxito</div><div class="t">--success-soft</div></div>
+<div class="sw"><div class="chip" style="background:var(--danger);color:var(--danger-on)">Error</div><div class="n">Error (restringido)</div><div class="t">--danger</div></div>
+<div class="sw"><div class="chip" style="background:var(--warning-soft);color:#7a5b18">Aviso</div><div class="n">Aviso (restringido)</div><div class="t">--warning / -soft</div></div>
+</div></body></html>

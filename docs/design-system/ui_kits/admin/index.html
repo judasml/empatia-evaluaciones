@@ -1,0 +1,67 @@
+<!-- @dsCard group="empat.IA 360 · Admin" viewport="1200x820" name="Dashboard del ciclo (RRHH)" subtitle="Control operativo: métricas, cobertura con umbral de anonimato, recordatorios" -->
+<!-- @startingPoint section="empat.IA 360 · Admin" subtitle="Dashboard del encargado de RRHH — ciclo 360 activo" viewport="1200x820" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>empat.IA 360 — Dashboard del ciclo</title>
+<template id="__bundler_thumbnail" data-bg-color="#f6f3ee">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#f6f3ee"/>
+    <circle cx="100" cy="100" r="46" fill="none" stroke="#38bdf8" stroke-width="6"/>
+    <circle cx="100" cy="100" r="26" fill="#38bdf8"/>
+    <text x="100" y="106" font-family="sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">KIM</text>
+  </svg>
+</template>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { font-family: var(--font-sans); color: var(--text-strong); background: var(--bg-page); }
+  .fade { animation: fade var(--dur-slow) var(--ease-out); }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  /* Entrance stagger */
+  .rise { animation: fade 520ms var(--ease-out) both; }
+  /* Skeleton shimmer */
+  .sk { display: block; background: linear-gradient(90deg, var(--surface-subtle) 25%, var(--surface-muted) 50%, var(--surface-subtle) 75%);
+        background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  /* Row hover */
+  tbody tr { transition: background var(--dur-fast) var(--ease-standard); }
+  tbody tr:hover { background: var(--surface-subtle); }
+  .prow { transition: background var(--dur-fast) var(--ease-standard); }
+  .prow:hover { background: var(--surface-subtle); }
+  /* Ver resultados link */
+  .rlink { transition: color var(--dur-fast) var(--ease-standard); }
+  .rlink:hover { color: var(--brand); }
+  .rlink .go { transition: transform var(--dur-fast) var(--ease-standard); }
+  .rlink:hover .go { transform: translateX(2px); }
+  /* Micro-feedback */
+  .spin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--border-default); border-top-color: var(--brand); animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .pop { animation: pop 340ms var(--ease-out) both; }
+  @keyframes pop { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); } }
+  .num { font-variant-numeric: tabular-nums; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    (async function boot() {
+      const opt = { presets: [['react', { runtime: 'classic' }]] };
+      const load = async (url) => Babel.transform(await (await fetch(url)).text(), opt).code;
+      (0, eval)(await load('../../ds-preview.js'));
+      (0, eval)(await load('./dashboard.jsx'));
+    })().catch((e) => {
+      document.getElementById('root').innerHTML = '<pre style="padding:16px;color:#b00;font:12px monospace;white-space:pre-wrap">' + (e && e.stack || e) + '</pre>';
+    });
+  </script>
+</body>
+</html>

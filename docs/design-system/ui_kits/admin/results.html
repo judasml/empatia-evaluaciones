@@ -1,0 +1,49 @@
+<!-- @dsCard group="empat.IA 360 · Admin" viewport="1200x900" name="Resultados individuales (360)" subtitle="Reporte de un evaluado: radar por fuente, brechas de percepción, fortalezas y comentarios" -->
+<!-- @startingPoint section="empat.IA 360 · Admin" subtitle="Resultados individuales de un evaluado — evaluación 360" viewport="1200x900" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>empat.IA 360 — Resultados de Lucía Fernández</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { font-family: var(--font-sans); color: var(--text-strong); background: var(--bg-page); }
+  .rise { animation: fade 520ms var(--ease-out) both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .num { font-variant-numeric: tabular-nums; }
+  /* Radar traces: smooth dim on legend hover */
+  .trace { transition: opacity 240ms var(--ease-standard); }
+  .lchip { transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard); cursor: default; }
+  .lchip:hover { background: var(--surface-subtle); }
+  /* Back link */
+  .blink { transition: color var(--dur-fast) var(--ease-standard); }
+  .blink:hover { color: var(--text-strong); }
+  /* Draw-in for radar polygons */
+  @keyframes trace-in { from { opacity: 0; } to { opacity: 1; } }
+  .trace-in { animation: trace-in 700ms var(--ease-out) both; }
+  /* Gap bar fill slide */
+  .gapfill { transform-origin: left center; animation: growx 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    (async function boot() {
+      const opt = { presets: [['react', { runtime: 'classic' }]] };
+      const load = async (url) => Babel.transform(await (await fetch(url)).text(), opt).code;
+      (0, eval)(await load('../../ds-preview.js'));
+      (0, eval)(await load('./results.jsx'));
+    })().catch((e) => {
+      document.getElementById('root').innerHTML = '<pre style="padding:16px;color:#b00;font:12px monospace;white-space:pre-wrap">' + (e && e.stack || e) + '</pre>';
+    });
+  </script>
+</body>
+</html>

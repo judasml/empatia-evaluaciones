@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Feedback y progreso" subtitle="ProgressBar, RatingScale, Toast, EmptyState" -->
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"/>
+<link rel="stylesheet" href="../../styles.css"/>
+<style>
+  body{margin:0;background:var(--bg-page);font-family:var(--font-sans);color:var(--text-strong);padding:28px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;max-width:660px}
+  .stack{display:flex;flex-direction:column;gap:20px}
+  .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);margin:0 0 10px}
+</style></head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/plain" id="demo">
+  const { ProgressBar, RatingScale, Toast, EmptyState, Button } = window.Empat;
+  const Inbox = (p)=><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13l3.5 7v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5z"/></svg>;
+  function Demo(){
+    return (
+      <div className="grid">
+        <div className="stack">
+          <div><p className="lbl">ProgressBar</p>
+            <div className="stack" style={{gap:14}}>
+              <ProgressBar value={62} label="Ciclo Q2" showValue />
+              <ProgressBar segments={4} value={25} size="sm" />
+            </div>
+          </div>
+          <div><p className="lbl">RatingScale</p>
+            <RatingScale max={5} defaultValue={4} lowLabel="Nunca" highLabel="Siempre" />
+          </div>
+        </div>
+        <div className="stack">
+          <div><p className="lbl">Toast</p>
+            <Toast tone="success" title="Evaluación enviada" description="Gracias por tu tiempo." onClose={()=>{}} />
+          </div>
+          <div><p className="lbl">EmptyState</p>
+            <EmptyState icon={<Inbox/>} title="Sin evaluaciones pendientes" description="Cuando alguien te asigne una evaluación aparecerá aquí." action={<Button variant="secondary" size="sm">Actualizar</Button>} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+<script>
+(async()=>{const opt={presets:[['react',{runtime:'classic'}]]};
+const load=async u=>Babel.transform(await(await fetch(u)).text(),opt).code;
+(0,eval)(await load('../../ds-preview.js'));
+(0,eval)(Babel.transform(document.getElementById('demo').textContent,opt).code);})();
+</script>
+</body></html>
