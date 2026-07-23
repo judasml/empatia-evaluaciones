@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Icon } from "@/components/icon";
@@ -62,4 +61,3 @@ export function AppHeader({
     </header>
   );
 }
-

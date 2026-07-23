@@ -1,4 +1,3 @@
-
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -38,4 +37,3 @@ export function Button({
     </button>
   );
 }
-

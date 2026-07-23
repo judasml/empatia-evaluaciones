@@ -1,4 +1,3 @@
-
 import type { HTMLAttributes, ReactNode } from "react";
 
 type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
@@ -24,4 +23,3 @@ export function Badge({
     </span>
   );
 }
-

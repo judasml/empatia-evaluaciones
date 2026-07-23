@@ -36,4 +36,3 @@ Documentos maestros: `docs/product-plan.md`, `docs/mvp-backlog.md`, `docs/data-m
 ## Qué hacer ante ambigüedad
 
 Elige la interpretación más simple compatible con `docs/product-plan.md`, decláralo en una línea y continúa. Preguntar es el último recurso, no el primero.
-

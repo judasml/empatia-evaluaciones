@@ -1,4 +1,3 @@
-
 import type { HTMLAttributes } from "react";
 
 type AvatarProps = HTMLAttributes<HTMLSpanElement> & {
@@ -40,4 +39,3 @@ export function Avatar({
     </span>
   );
 }
-

@@ -1,4 +1,3 @@
-
 export default function EvaluationLoading() {
   return (
     <main className="evaluation-page">
@@ -11,4 +10,3 @@ export default function EvaluationLoading() {
     </main>
   );
 }
-
