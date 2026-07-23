@@ -1,4 +1,3 @@
-
 import { AppHeader } from "@/components/design-system/app-header";
 import { Button } from "@/components/design-system/button";
 import { Textarea } from "@/components/design-system/textarea";
@@ -12,7 +11,9 @@ type CommentScreenProps = {
   questionTotal: number;
   onChange: (comment: string) => void;
   onPrevious: () => void;
-  onSubmit: () => void;
+  onSubmit: () => Promise<void>;
+  submitting: boolean;
+  submitError: string | null;
 };
 
 export function CommentScreen({
@@ -23,6 +24,8 @@ export function CommentScreen({
   onChange,
   onPrevious,
   onSubmit,
+  submitting,
+  submitError,
 }: CommentScreenProps) {
   const firstName = assignment.subject.displayName.split(" ")[0];
 
@@ -62,6 +65,11 @@ export function CommentScreen({
               ? "Este comentario se comparte de forma anónima, sin tu nombre."
               : "Este comentario se comparte de forma confidencial con los roles autorizados."}
           </p>
+          {submitError ? (
+            <p className="submit-error" role="alert">
+              {submitError}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -71,15 +79,20 @@ export function CommentScreen({
           size="lg"
           fullWidth
           onClick={onSubmit}
-          disabled={!comment.trim()}
+          disabled={!comment.trim() || submitting}
         >
-          Enviar evaluación
+          {submitting ? "Guardando…" : "Enviar evaluación"}
         </Button>
-        <Button variant="ghost" size="md" fullWidth onClick={onSubmit}>
-          Enviar sin comentario
+        <Button
+          variant="ghost"
+          size="md"
+          fullWidth
+          onClick={onSubmit}
+          disabled={submitting}
+        >
+          {submitting ? "Espera un momento" : "Enviar sin comentario"}
         </Button>
       </footer>
     </section>
   );
 }
-

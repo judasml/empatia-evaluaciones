@@ -1,4 +1,3 @@
-
 import type { HTMLAttributes, ReactNode } from "react";
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
@@ -29,4 +28,3 @@ export function Card({
     </div>
   );
 }
-

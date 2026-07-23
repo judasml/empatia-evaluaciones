@@ -1,4 +1,3 @@
-
 import { useEffect, useId, useRef, type ReactNode } from "react";
 
 type DialogProps = {
@@ -74,4 +73,3 @@ export function Dialog({
     </div>
   );
 }
-

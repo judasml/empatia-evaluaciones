@@ -3,7 +3,7 @@ import { Card } from "@/components/design-system/card";
 import { Icon } from "@/components/icon";
 
 type TokenStateProps = {
-  status: "expired" | "revoked" | "invalid";
+  status: "expired" | "revoked" | "invalid" | "completed";
 };
 
 const copy = {
@@ -24,6 +24,12 @@ const copy = {
     title: "No pudimos abrir esta invitación",
     description:
       "Revisa que hayas copiado el enlace completo. Si el problema continúa, pide uno nuevo a la persona que te invitó.",
+  },
+  completed: {
+    eyebrow: "Evaluación completada",
+    title: "Tus respuestas ya fueron enviadas",
+    description:
+      "Este enlace ya se utilizó. Gracias por compartir tu opinión y completar la evaluación.",
   },
 } as const;
 

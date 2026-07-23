@@ -1,8 +1,8 @@
-
 import type { CSSProperties } from "react";
+import { submitEvaluation } from "@/app/evaluar/[token]/actions";
 import { EvaluationFlow } from "@/components/evaluation/evaluation-flow";
 import { TokenState } from "@/components/token-state";
-import { findInvitationByToken } from "@/lib/demo-invitations";
+import { findInvitationByToken } from "@/lib/public-evaluations";
 
 type EvaluationPageProps = {
   params: Promise<{ token: string }>;
@@ -25,13 +25,16 @@ export default async function EvaluationPage({ params }: EvaluationPageProps) {
     "--brand": lookup.invitation.organization.brandColor,
     "--brand-on": lookup.invitation.organization.brandOnColor,
   };
+  const submitForToken = submitEvaluation.bind(null, token);
 
   return (
     <main className="evaluation-page" style={brandStyle}>
       <div className="evaluation-shell">
-        <EvaluationFlow invitation={lookup.invitation} />
+        <EvaluationFlow
+          invitation={lookup.invitation}
+          onSubmit={submitForToken}
+        />
       </div>
     </main>
   );
 }
-

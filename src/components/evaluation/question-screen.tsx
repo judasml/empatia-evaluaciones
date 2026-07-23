@@ -1,4 +1,3 @@
-
 import { AppHeader } from "@/components/design-system/app-header";
 import { ProgressBar } from "@/components/design-system/progress-bar";
 import { Icon } from "@/components/icon";
@@ -127,4 +126,3 @@ export function QuestionScreen({
     </section>
   );
 }
-

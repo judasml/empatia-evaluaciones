@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@fontsource/hanken-grotesk/400.css";
@@ -30,4 +29,3 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
-

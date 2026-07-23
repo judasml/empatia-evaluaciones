@@ -1,4 +1,3 @@
-
 import type { HTMLAttributes } from "react";
 
 type ProgressBarProps = HTMLAttributes<HTMLDivElement> & {
@@ -67,4 +66,3 @@ export function ProgressBar({
     </div>
   );
 }
-

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -6,7 +5,11 @@ import { CommentScreen } from "@/components/evaluation/comment-screen";
 import { QuestionScreen } from "@/components/evaluation/question-screen";
 import { TransitionScreen } from "@/components/evaluation/transition-screen";
 import { WelcomeScreen } from "@/components/evaluation/welcome-screen";
-import type { PublicInvitation } from "@/lib/public-invitation";
+import type {
+  PublicInvitation,
+  SubmissionPayload,
+  SubmissionResult,
+} from "@/lib/public-invitation";
 
 type Screen = "welcome" | "question" | "comment" | "transition";
 
@@ -23,6 +26,7 @@ type StoredProgress = {
 
 type EvaluationFlowProps = {
   invitation: PublicInvitation;
+  onSubmit: (payload: SubmissionPayload) => Promise<SubmissionResult>;
 };
 
 const defaultProgress: Omit<StoredProgress, "invitationId"> = {
@@ -66,7 +70,10 @@ function isStoredProgress(
   );
 }
 
-export function EvaluationFlow({ invitation }: EvaluationFlowProps) {
+export function EvaluationFlow({
+  invitation,
+  onSubmit,
+}: EvaluationFlowProps) {
   const storageKey = `empatia:progress:${invitation.id}`;
   const [screen, setScreen] = useState<Screen>(defaultProgress.screen);
   const [assignmentIndex, setAssignmentIndex] = useState(
@@ -86,6 +93,8 @@ export function EvaluationFlow({ invitation }: EvaluationFlowProps) {
   );
   const [hydrated, setHydrated] = useState(false);
   const [advancing, setAdvancing] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const assignment = invitation.assignments[assignmentIndex];
@@ -199,10 +208,59 @@ export function EvaluationFlow({ invitation }: EvaluationFlowProps) {
     setQuestionIndex((current) => Math.max(0, current - 1));
   };
 
-  const submitAssignment = () => {
+  const submitAssignment = async () => {
+    if (submitting) {
+      return;
+    }
+
+    const submissionAnswers = invitation.questionnaire.questions.flatMap(
+      (item) => {
+        const value = answers[`${assignment.id}:${item.id}`];
+        return typeof value === "number"
+          ? [{ questionId: item.id, value }]
+          : [];
+      },
+    );
+
+    if (
+      submissionAnswers.length !== invitation.questionnaire.questions.length
+    ) {
+      setSubmitError(
+        "Falta al menos una respuesta. Vuelve atrás y completa la evaluación.",
+      );
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+    let result: SubmissionResult;
+    try {
+      result = await onSubmit({
+        answers: submissionAnswers,
+        comment: comments[assignment.id],
+      });
+    } catch {
+      setSubmitError(
+        "No pudimos guardar tus respuestas. Revisa tu conexión e inténtalo de nuevo.",
+      );
+      setSubmitting(false);
+      return;
+    }
+
+    if (result.status !== "completed") {
+      setSubmitError(
+        result.status === "error"
+          ? result.message
+          : "Este enlace ya no está disponible para recibir respuestas.",
+      );
+      setSubmitting(false);
+      return;
+    }
+
     setCompletedAssignmentIds((current) =>
       current.includes(assignment.id) ? current : [...current, assignment.id],
     );
+    setSubmitting(false);
     setScreen("transition");
   };
 
@@ -272,6 +330,8 @@ export function EvaluationFlow({ invitation }: EvaluationFlowProps) {
         }
         onPrevious={previousQuestion}
         onSubmit={submitAssignment}
+        submitting={submitting}
+        submitError={submitError}
       />
     );
   }
@@ -290,4 +350,3 @@ export function EvaluationFlow({ invitation }: EvaluationFlowProps) {
     />
   );
 }
-

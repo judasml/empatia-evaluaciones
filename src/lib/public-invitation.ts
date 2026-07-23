@@ -41,4 +41,17 @@ export type PublicInvitation = {
 
 export type InvitationLookup =
   | { status: "valid"; invitation: PublicInvitation }
-  | { status: "expired" | "revoked" | "invalid" };
+  | { status: "expired" | "revoked" | "invalid" | "completed" };
+
+export type SubmissionPayload = {
+  answers: Array<{
+    questionId: string;
+    value: number;
+  }>;
+  comment?: string;
+};
+
+export type SubmissionResult =
+  | { status: "completed" }
+  | { status: "unavailable" }
+  | { status: "error"; message: string };

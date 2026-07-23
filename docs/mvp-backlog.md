@@ -156,29 +156,54 @@
 ### MVP-025 — Reporte narrativo con Claude API
 - Prompt de reporte ejecutivo.
 - Entrada estructurada desde resultados seguros.
-- Guardar gene…75885 tokens truncated…ghtLabel}</span>
-            </div>
-          </fieldset>
+- Guardar generación/costo estimado.
+- Criterio de aceptación: genera narrativa consistente sin exponer datos prohibidos.
 
-          <div className="question__footer">
-            {questionIndex > 0 ? (
-              <button
-                type="button"
-                className="text-button"
-                onClick={onPrevious}
-              >
-                <Icon name="arrow-left" size={15} />
-                Anterior
-              </button>
-            ) : (
-              <span />
-            )}
-            <span className="save-note" aria-live="polite">
-              Guardado en este dispositivo
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+### MVP-026 — Chat de IA sobre resultados
+- UI de chat para RR.HH.
+- Preguntas sobre campaña/resultados.
+- Respuestas con citas internas de datos agregados.
+- Criterio de aceptación: el chat responde solo dentro del alcance de organización/campaña/modo.
+
+### MVP-027 — Auditoría de agente
+- Log de consultas.
+- Usuario.
+- Organización.
+- Campaña.
+- Modo.
+- Contexto usado.
+- Criterio de aceptación: cada consulta queda auditable.
+
+## Épica 8 — Importación secundaria de Excel
+
+### MVP-028 — Plantilla fija de Excel
+- Definir formato aceptado.
+- Validar columnas.
+- Mostrar errores claros.
+- Criterio de aceptación: importaciones inválidas no contaminan datos.
+
+### MVP-029 — Importar respuestas legado
+- Mapear a campañas/sujetos/preguntas.
+- Mantener limitaciones visibles.
+- Criterio de aceptación: importación funciona solo con plantilla fija.
+
+## Épica 9 — QA, privacidad y salida MVP
+
+### MVP-030 — Pruebas de privacidad
+- Tests de RLS.
+- Tests de funciones de contexto IA.
+- Tests de anonimato bajo N.
+- Criterio de aceptación: suite falla si aparece identidad ↔ contenido en modo Anónimo.
+
+### MVP-031 — Datos demo
+- Organización demo MK.
+- Campaña demo 270°.
+- Resultados ficticios.
+- Criterio de aceptación: demo permite recorrer admin, colaborador, reportes e IA.
+
+### MVP-032 — Checklist de lanzamiento
+- Variables de entorno.
+- Políticas RLS revisadas.
+- Avisos legales por modo.
+- Límites IA.
+- Criterio de aceptación: MVP listo para piloto cerrado.

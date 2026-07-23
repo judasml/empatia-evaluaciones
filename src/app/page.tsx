@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Card } from "@/components/design-system/card";
 import { Icon } from "@/components/icon";
@@ -11,8 +10,8 @@ export default function HomePage() {
         <p className="eyebrow">Evaluaciones</p>
         <h1>Feedback más humano, desde el primer clic.</h1>
         <p className="home-page__lead">
-          Esta primera versión recorre la experiencia del colaborador que recibe
-          una invitación por enlace, sin login.
+          Gestiona ciclos de evaluación y responde invitaciones desde una
+          experiencia clara, segura y adaptada a cada organización.
         </p>
         <Card padding="lg" className="home-page__demo">
           <span className="home-page__demo-icon">
@@ -24,13 +23,18 @@ export default function HomePage() {
               El token se valida en el servidor y nunca se guarda en el navegador.
             </p>
           </div>
-          <Link href="/evaluar/demo-valido" className="primary-link">
-            Abrir evaluación
-            <Icon name="chevron-right" size={18} />
-          </Link>
+          <div className="home-page__links">
+            <Link href="/evaluar/demo-valido" className="primary-link">
+              Abrir evaluación
+              <Icon name="chevron-right" size={18} />
+            </Link>
+            <Link href="/admin" className="secondary-link">
+              Abrir panel administrativo
+              <Icon name="arrow-right" size={16} />
+            </Link>
+          </div>
         </Card>
       </div>
     </main>
   );
 }
-

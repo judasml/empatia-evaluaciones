@@ -1,4 +1,3 @@
-
 # empat.IA Evaluaciones — Plan de producto y arquitectura
 
 ## 1. Decisiones confirmadas
@@ -175,4 +174,3 @@ La implementación debe migrar esos conceptos a componentes Next.js mantenibles,
 8. Reporte individual.
 9. Agente IA con capa segura de contexto.
 10. Exportación y polish visual.
-
